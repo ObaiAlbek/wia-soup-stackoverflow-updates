@@ -1,0 +1,19 @@
+# LaTeX Build-Dateien ignorieren
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.synctex(busy)
+*.lof
+*.lot
+*.bcf
+*.fls
+*.fdb_latexmk
+*.run.xml
+*.bbl
+*.blg
+
+# Optional: Auch das PDF ignorieren (man baut es sich ja selbst)
+# Falls du das PDF unbedingt auf GitHub willst, mache ein # vor die nächste Zeile
+*.pdf

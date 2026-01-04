@@ -1,0 +1,818 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{StackOverflowSurvey2023}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=84d7dc19766c446f5e4084e8fce87f82}{%
+           family={{Stack Overflow}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{bibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorbibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authornamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Stack Overflow Developer Survey 2023}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://survey.stackoverflow.co/2023
+      \endverb
+      \verb{url}
+      \verb https://survey.stackoverflow.co/2023
+      \endverb
+    \endentry
+    \entry{Zhang2019ObsoleteAnswers}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=4f3335a012f1025af007b1682409473d}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Haoxiang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f1286dcf2b148db58d455825860e8a88}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shaowei},
+           giveni={S\bibinitperiod}}}%
+        {{hash=21cae5fc26d99efffe1e5b6f2b5e2105}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Tse-Hsun},
+           giveni={T\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=7889e5bdb5736a9e8faf1d8fac746cec}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={Ying},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=37a79f9b3d67c262a89ed8c5521d654f}{%
+           family={Hassan},
+           familyi={H\bibinitperiod},
+           given={Ahmed\bibnamedelima E.},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{fullhash}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{fullhashraw}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{bibnamehash}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{authorbibnamehash}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{authornamehash}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{authorfullhash}{51b38b39a95785f67a283a7f958e96c1}
+      \strng{authorfullhashraw}{51b38b39a95785f67a283a7f958e96c1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Empirical Software Engineering}
+      \field{number}{3}
+      \field{title}{An Empirical Study of Obsolete Answers on Stack Overflow}
+      \field{volume}{24}
+      \field{year}{2019}
+      \field{pages}{1295\bibrangedash 1333}
+      \range{pages}{39}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10664-018-9667-8
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10664-018-9667-8
+      \endverb
+    \endentry
+    \entry{Fischer2017SOHarmful}{inproceedings}{}{}
+      \name{author}{7}{}{%
+        {{hash=9e4d006320cd85c4d6908127fdac59ec}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Felix},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e11d4fbec06848f5a66d796bae6da2bf}{%
+           family={Böttinger},
+           familyi={B\bibinitperiod},
+           given={Konstantin},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8d879bf44b742258e9dccce34809b7dd}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Huang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=3730929733d698e2c730569356d2dc58}{%
+           family={Stransky},
+           familyi={S\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6a8ab10964c3963ddb18cef14d4289cc}{%
+           family={Acar},
+           familyi={A\bibinitperiod},
+           given={Yasemin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=4b96cad75f27ce1349d97e2aea69ac76}{%
+           family={Backes},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1028844fea5de62386623e035ed1f307}{%
+           family={Fahl},
+           familyi={F\bibinitperiod},
+           given={Sascha},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{9807be52642ccf08b98be75b7e5b3b12}
+      \strng{fullhash}{e989a41b8703161c68b085ace7fc584f}
+      \strng{fullhashraw}{e989a41b8703161c68b085ace7fc584f}
+      \strng{bibnamehash}{9807be52642ccf08b98be75b7e5b3b12}
+      \strng{authorbibnamehash}{9807be52642ccf08b98be75b7e5b3b12}
+      \strng{authornamehash}{9807be52642ccf08b98be75b7e5b3b12}
+      \strng{authorfullhash}{e989a41b8703161c68b085ace7fc584f}
+      \strng{authorfullhashraw}{e989a41b8703161c68b085ace7fc584f}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2017 IEEE Symposium on Security and Privacy (SP)}
+      \field{title}{Stack Overflow Considered Harmful? The Impact of Copy{\&}Paste on Android Application Security}
+      \field{year}{2017}
+      \field{pages}{121\bibrangedash 136}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/SP.2017.31
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/SP.2017.31
+      \endverb
+    \endentry
+    \entry{ZhouWalker2016Deprecation}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=ac696aa3d4b6ac91f76d77e438aadcbf}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+        {{hash=795c5cea0bb4afefa39e323647ce74de}{%
+           family={Walker},
+           familyi={W\bibinitperiod},
+           given={Robert\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{fullhash}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{fullhashraw}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{bibnamehash}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{authorbibnamehash}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{authornamehash}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{authorfullhash}{4545f3732fc76ecb10beafa1880e9fea}
+      \strng{authorfullhashraw}{4545f3732fc76ecb10beafa1880e9fea}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 24th ACM SIGSOFT International Symposium on the Foundations of Software Engineering (FSE '16)}
+      \field{title}{API Deprecation: A Retrospective Analysis and Detection Method for Code Examples on the Web}
+      \field{year}{2016}
+      \field{pages}{266\bibrangedash 277}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2950290.2950298
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2950290.2950298
+      \endverb
+    \endentry
+    \entry{Baltes2018SOTorrent}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=0b6d47e6f5cdb35d7ab61aa55aec889b}{%
+           family={Baltes},
+           familyi={B\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=23bf195d3feea3a4565b93c02a1789e2}{%
+           family={Dumani},
+           familyi={D\bibinitperiod},
+           given={Lorik},
+           giveni={L\bibinitperiod}}}%
+        {{hash=fc21c10b2d386c8460fa30c762643c06}{%
+           family={Treude},
+           familyi={T\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=591a5a74eb885a715250635d3efb5673}{%
+           family={Diehl},
+           familyi={D\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{fullhash}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{fullhashraw}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{bibnamehash}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{authorbibnamehash}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{authornamehash}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{authorfullhash}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \strng{authorfullhashraw}{3f7135fae8a5c58ba754a9fb67258aa8}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 15th International Conference on Mining Software Repositories (MSR '18)}
+      \field{title}{SOTorrent: Reconstructing and Analyzing the Evolution of Stack Overflow Posts}
+      \field{year}{2018}
+      \field{pages}{319\bibrangedash 330}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3196398.3196430
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3196398.3196430
+      \endverb
+    \endentry
+    \entry{Sheikhaei2023URC}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=0560eb39346bb741dc97119b89a85bef}{%
+           family={Sheikhaei},
+           familyi={S\bibinitperiod},
+           given={Mohammad\bibnamedelima Sadegh},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=d12eaa4bcfe35e37d08f0d3d058861fd}{%
+           family={Tian},
+           familyi={T\bibinitperiod},
+           given={Yuan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f1286dcf2b148db58d455825860e8a88}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shaowei},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{fullhash}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{fullhashraw}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{bibnamehash}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{authorbibnamehash}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{authornamehash}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{authorfullhash}{f9388a40d4202740a6f0f4163211bf49}
+      \strng{authorfullhashraw}{f9388a40d4202740a6f0f4163211bf49}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Systems and Software}
+      \field{title}{A study of update request comments in Stack Overflow answer posts}
+      \field{volume}{198}
+      \field{year}{2023}
+      \field{pages}{111590}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.jss.2022.111590
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.jss.2022.111590
+      \endverb
+    \endentry
+    \entry{SoniNadi2019CommentUpdates}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=3c5e276d4552e68604ff1ea4f3ad004e}{%
+           family={Soni},
+           familyi={S\bibinitperiod},
+           given={Abhishek},
+           giveni={A\bibinitperiod}}}%
+        {{hash=432bbfddc1ac38d3d29b7d11ca30d996}{%
+           family={Nadi},
+           familyi={N\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE/ACM}%
+      }
+      \strng{namehash}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{fullhash}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{fullhashraw}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{bibnamehash}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{authorbibnamehash}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{authornamehash}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{authorfullhash}{c0900fcdbb65d39811ceffd836bd52cf}
+      \strng{authorfullhashraw}{c0900fcdbb65d39811ceffd836bd52cf}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 16th International Conference on Mining Software Repositories (MSR '19)}
+      \field{title}{Analyzing Comment-Induced Updates on Stack Overflow}
+      \field{year}{2019}
+      \field{pages}{220\bibrangedash 234}
+      \range{pages}{15}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/MSR.2019.00044
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/MSR.2019.00044
+      \endverb
+    \endentry
+    \entry{Kabir2024IsSOObsolete}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=5863ada7daf6802371dd2dabb1c1f766}{%
+           family={Kabir},
+           familyi={K\bibinitperiod},
+           given={Samia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d3b853a1f3777affc2b27f8403dd33d8}{%
+           family={Udo-Imeh},
+           familyi={U\bibinithyphendelim I\bibinitperiod},
+           given={David\bibnamedelima N.},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=124c2f5d6aebf63c282e648438c82b37}{%
+           family={Kou},
+           familyi={K\bibinitperiod},
+           given={Bonan},
+           giveni={B\bibinitperiod}}}%
+        {{hash=733e3732b7e3ce5cf2b04cf5e9bd9cf1}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Tianyi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{fullhash}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{fullhashraw}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{bibnamehash}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{authorbibnamehash}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{authornamehash}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{authorfullhash}{fd7ce27045854cde9d6c5b66fe291f55}
+      \strng{authorfullhashraw}{fd7ce27045854cde9d6c5b66fe291f55}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the CHI Conference on Human Factors in Computing Systems (CHI '24)}
+      \field{title}{Is Stack Overflow Obsolete? An Empirical Study of the Characteristics of ChatGPT Answers to Stack Overflow Questions}
+      \field{year}{2024}
+      \field{pages}{1\bibrangedash 17}
+      \range{pages}{17}
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3613904.3642596
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3613904.3642596
+      \endverb
+    \endentry
+    \entry{delRioChanona2024KnowledgeSharing}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=1a0b7eca4ec63cd3cef3099e71d1c42b}{%
+           family={Rio-Chanona},
+           familyi={R\bibinithyphendelim C\bibinitperiod},
+           given={R.\bibnamedelimi Maria},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+           prefix={del},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=fe367adf044fbd037420027bef6ce28c}{%
+           family={Laurentsyeva},
+           familyi={L\bibinitperiod},
+           given={Nadzeya},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a2f78fcf45896ca91b17eb921b522520}{%
+           family={List},
+           familyi={L\bibinitperiod},
+           given={John\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=8dceff27b5610013060a1e76554d3c62}{%
+           family={Novosad},
+           familyi={N\bibinitperiod},
+           given={Paul\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=36dbba3b4e573cb9be2f1930fa50b042}{%
+           family={Samek},
+           familyi={S\bibinitperiod},
+           given={Anya},
+           giveni={A\bibinitperiod}}}%
+        {{hash=bd3e82975b4354cd5bb4c09b14ce1024}{%
+           family={Wüthrich},
+           familyi={W\bibinitperiod},
+           given={Kaspar},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{eaf306a59aef644a627373272d05f1b2}
+      \strng{fullhash}{eaf306a59aef644a627373272d05f1b2}
+      \strng{fullhashraw}{eaf306a59aef644a627373272d05f1b2}
+      \strng{bibnamehash}{eaf306a59aef644a627373272d05f1b2}
+      \strng{authorbibnamehash}{eaf306a59aef644a627373272d05f1b2}
+      \strng{authornamehash}{eaf306a59aef644a627373272d05f1b2}
+      \strng{authorfullhash}{eaf306a59aef644a627373272d05f1b2}
+      \strng{authorfullhashraw}{eaf306a59aef644a627373272d05f1b2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PNAS Nexus}
+      \field{number}{9}
+      \field{title}{Large language models reduce public knowledge sharing on online communities}
+      \field{volume}{3}
+      \field{year}{2024}
+      \field{pages}{pgae400}
+      \range{pages}{-1}
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/pnasnexus/pgae400
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/pnasnexus/pgae400
+      \endverb
+    \endentry
+    \entry{Mai2025SOUP}{inproceedings}{}{}
+      \name{author}{7}{}{%
+        {{hash=8c8f9982ccde34d696b9634be9773762}{%
+           family={Mai},
+           familyi={M\bibinitperiod},
+           given={Yubo},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=724505487cd8ba27214a375281bc719f}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Zhipeng},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=06a96011941dcb5ef7373a0af7d797cf}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Haoye},
+           giveni={H\bibinitperiod}}}%
+        {{hash=03588c1b702bbc02206dfa8a42580c08}{%
+           family={Bi},
+           familyi={B\bibinitperiod},
+           given={Tingting},
+           giveni={T\bibinitperiod}}}%
+        {{hash=cc38e4120bd15d134ad72e1475cec7d6}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Xing},
+           giveni={X\bibinitperiod}}}%
+        {{hash=389bc525f2088642cfd16749beb3312e}{%
+           family={Xia},
+           familyi={X\bibinitperiod},
+           given={Xin},
+           giveni={X\bibinitperiod}}}%
+        {{hash=18d6768f3b7b4cdf6986023492b0489c}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jianling},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE/ACM}%
+      }
+      \strng{namehash}{bd3743f145efa8c4245fc52aa17bc59a}
+      \strng{fullhash}{a638940a5e156aafc0c624695e6e9d97}
+      \strng{fullhashraw}{a638940a5e156aafc0c624695e6e9d97}
+      \strng{bibnamehash}{bd3743f145efa8c4245fc52aa17bc59a}
+      \strng{authorbibnamehash}{bd3743f145efa8c4245fc52aa17bc59a}
+      \strng{authornamehash}{bd3743f145efa8c4245fc52aa17bc59a}
+      \strng{authorfullhash}{a638940a5e156aafc0c624695e6e9d97}
+      \strng{authorfullhashraw}{a638940a5e156aafc0c624695e6e9d97}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2025 IEEE/ACM 47th International Conference on Software Engineering (ICSE)}
+      \field{title}{Towards Better Answers: Automated Stack Overflow Post Updating}
+      \field{year}{2025}
+      \field{pages}{591\bibrangedash 603}
+      \range{pages}{13}
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/ICSE55347.2025.00024
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/ICSE55347.2025.00024
+      \endverb
+    \endentry
+    \entry{StackOverflowHelpEditing}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=84d7dc19766c446f5e4084e8fce87f82}{%
+           family={{Stack Overflow}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{bibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorbibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authornamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Why can people edit my posts? How does editing work?}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://stackoverflow.com/help/editing
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.com/help/editing
+      \endverb
+    \endentry
+    \entry{StackExchangeDataDumpBlog2014}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=c2555fe7382f0f522e5af74044bb6ae5}{%
+           family={{Stack Overflow Blog}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{fullhash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{fullhashraw}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{bibnamehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authorbibnamehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authornamehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authorfullhash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authorfullhashraw}{c2555fe7382f0f522e5af74044bb6ae5}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Stack Exchange Creative Commons data now hosted by the Internet Archive}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://stackoverflow.blog/2014/01/23/stack-exchange-cc-data-now-hosted-by-the-internet-archive/
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.blog/2014/01/23/stack-exchange-cc-data-now-hosted-by-the-internet-archive/
+      \endverb
+    \endentry
+    \entry{StackExchangeLicenseTxt}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=f25cb1c6953bb0c62c639f3d7a242ec4}{%
+           family={{Stack Exchange}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{fullhash}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{fullhashraw}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{bibnamehash}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{authorbibnamehash}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{authornamehash}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{authorfullhash}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \strng{authorfullhashraw}{f25cb1c6953bb0c62c639f3d7a242ec4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{License file shipped with Stack Exchange data dumps (hosted by Internet Archive)}
+      \field{title}{Stack Exchange Data Dump license.txt}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2009}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://archive.org/download/stackexchange/license.txt
+      \endverb
+      \verb{url}
+      \verb https://archive.org/download/stackexchange/license.txt
+      \endverb
+    \endentry
+    \entry{StackOverflowBigQuery2016}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=c2555fe7382f0f522e5af74044bb6ae5}{%
+           family={{Stack Overflow Blog}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{fullhash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{fullhashraw}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{bibnamehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authorbibnamehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authornamehash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authorfullhash}{c2555fe7382f0f522e5af74044bb6ae5}
+      \strng{authorfullhashraw}{c2555fe7382f0f522e5af74044bb6ae5}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{You Can Now Play with Stack Overflow Data on Google's BigQuery}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://stackoverflow.blog/2016/12/15/you-can-now-play-with-stack-overflow-data-on-googles-bigquery/
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.blog/2016/12/15/you-can-now-play-with-stack-overflow-data-on-googles-bigquery/
+      \endverb
+    \endentry
+    \entry{StackOverflowHelpLicensing}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=84d7dc19766c446f5e4084e8fce87f82}{%
+           family={{Stack Overflow}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{bibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorbibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authornamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{What is the license for the content I post?}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://stackoverflow.com/help/licensing
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.com/help/licensing
+      \endverb
+    \endentry
+    \entry{StackExchangeCCBYSA2019}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=278ca5c497dab63abfdeb41d2eb0e74b}{%
+           family={{Meta Stack Exchange}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{fullhash}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{fullhashraw}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{bibnamehash}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{authorbibnamehash}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{authornamehash}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{authorfullhash}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \strng{authorfullhashraw}{278ca5c497dab63abfdeb41d2eb0e74b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Stack Exchange and Stack Overflow have moved to CC BY-SA 4.0}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://meta.stackexchange.com/questions/333089/stack-exchange-and-stack-overflow-have-moved-to-cc-by-sa-4-0
+      \endverb
+      \verb{url}
+      \verb https://meta.stackexchange.com/questions/333089/stack-exchange-and-stack-overflow-have-moved-to-cc-by-sa-4-0
+      \endverb
+    \endentry
+    \entry{StackOverflowCommentGuidance}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=84d7dc19766c446f5e4084e8fce87f82}{%
+           family={{Stack Overflow}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{fullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{bibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorbibnamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authornamehash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhash}{84d7dc19766c446f5e4084e8fce87f82}
+      \strng{authorfullhashraw}{84d7dc19766c446f5e4084e8fce87f82}
+      \field{extraname}{4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Comment everywhere}
+      \field{urlday}{20}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://stackoverflow.com/help/privileges/comment
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.com/help/privileges/comment
+      \endverb
+    \endentry
+    \entry{Wohlin2014Snowballing}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=e1ce15e2eeb53e3fc8c6035fd761594b}{%
+           family={Wohlin},
+           familyi={W\bibinitperiod},
+           given={Claes},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{fullhash}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{fullhashraw}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{bibnamehash}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{authorbibnamehash}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{authornamehash}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{authorfullhash}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \strng{authorfullhashraw}{e1ce15e2eeb53e3fc8c6035fd761594b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 18th International Conference on Evaluation and Assessment in Software Engineering (EASE)}
+      \field{title}{Guidelines for Snowballing in Systematic Literature Studies and a Replication in Software Engineering}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2601248.2601268
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2601248.2601268
+      \endverb
+    \endentry
+    \entry{KitchenhamCharters2007SLR}{report}{}{}
+      \name{author}{2}{}{%
+        {{hash=19919e365e4f12f6028593c952a9bacf}{%
+           family={Kitchenham},
+           familyi={K\bibinitperiod},
+           given={Barbara},
+           giveni={B\bibinitperiod}}}%
+        {{hash=e3aec3b248f01d4d14bbd3f116591257}{%
+           family={Charters},
+           familyi={C\bibinitperiod},
+           given={Stuart},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {Keele University}%
+        {Durham University Joint Report}%
+      }
+      \strng{namehash}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{fullhash}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{fullhashraw}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{bibnamehash}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{authorbibnamehash}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{authornamehash}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{authorfullhash}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \strng{authorfullhashraw}{bfd5bed68d4e3feb5cdc7e00ae82b588}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{EBSE-2007-01}
+      \field{title}{Guidelines for Performing Systematic Literature Reviews in Software Engineering}
+      \field{type}{techreport}
+      \field{year}{2007}
+      \verb{urlraw}
+      \verb https://legacyfileshare.elsevier.com/promis_misc/525444systematicreviewsguide.pdf
+      \endverb
+      \verb{url}
+      \verb https://legacyfileshare.elsevier.com/promis_misc/525444systematicreviewsguide.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
