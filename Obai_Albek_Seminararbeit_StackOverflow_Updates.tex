@@ -5,13 +5,9 @@
 \newcommand{\autoren}{Albek, Obai}
 \newcommand{\dokumententitel}{Automatisiertes Aktualisieren veralteter Stack-Overflow-Antworten mithilfe von Kommentaren: Eine dokumentenbasierte Analyse von SOUP}
 
-% Lädt die Vorlage der Hochschule
 \input{preambel} 
-
-% --- 100% KORREKTER ZITIERSTIL (IEEE + VGL) ---
-% Dieser Befehl sorgt dafür, dass \cite{Quelle} automatisch zu [vgl. 1] wird.
-% Das erfüllt die Vorlage (Nummern) UND das Skript ("vgl." Pflicht).
-\renewcommand{\cite}[2][]{\autocite[vgl.][#1]{#2}}
+\newcommand{\vglcite}[2][]{\autocite[vgl.][#1]{#2}}
+\renewcommand{\cite}[2][]{\autocite[#1]{#2}}
 
 \begin{document}
 
@@ -30,10 +26,10 @@ Paul-Wittsack-Str. 10, 68163 Mannheim
 \thispagestyle{plain}
 \pagestyle{plain}
 
-% --- ABSTRACT (Korrigiert: Akronyme definiert) ---
+% --- ABSTRACT---
 \begin{abstract}
 Stack Overflow ist eine zentrale Wissensplattform für Softwareentwicklerinnen und -entwickler, deren Inhalte jedoch durch Bibliotheks- und Application Programming Interface (API)-Evolution sowie veränderte Best Practices veralten können.
-Empirische Studie zeigt, dass obsolete Antworten verbreitet sind und nur begrenzt nachträglich aktualisiert werden; zugleich werden Code-Snippets häufig unkritisch wiederverwendet, was praktische Risiken (u.\,a.\ sicherheitsrelevante Fehlverwendungen) begünstigen kann.
+Veraltete Antworten sind verbreitet und werden oft nur begrenzt nachträglich aktualisiert; zugleich werden Code-Snippets häufig unkritisch wiederverwendet, was praktische Risiken (u.\,a.\ sicherheitsrelevante Fehlverwendungen) begünstigen kann.
 Diese Arbeit untersucht, wie Kommentare als Signal genutzt werden können, um veraltete oder fehlerhafte Antworten systematisch zu aktualisieren.
 Methodisch kombiniert die Arbeit eine literaturbasierte Synthese mit einer Fallstudie zum Framework Stack Overflow Updater for Post (SOUP), das kommentarbasiert Edit-Beziehungen modelliert und daraus Update-Vorschläge für Posts generiert.
 Die Analyse zeigt (i) dass Kommentare in Form von comment-induced updates und Update Request Comments (URCs) wiederholt als Auslöser für Verbesserungen dienen, (ii) dass automatisierte Aktualisierung durch Qualitätsfilterung und domänenspezifische Datensätze technisch praktikabel ist, und (iii) dass robuste Plattformpflege ein hybrides Vorgehen erfordert, in dem Künstliche Intelligenz (KI) Vorschläge liefert und Menschen Validierung und Verantwortung übernehmen.
@@ -53,22 +49,22 @@ Ergänzend diskutiert die Arbeit, warum Plattformpflege auch im Umfeld großer S
 \section{Einleitung}
 \subsection{Problem und Motivation}
 Stack Overflow ist eine zentrale Wissens- und Problemlösungsplattform für Softwareentwicklerinnen und -entwickler.
-Im Stack Overflow Developer Survey 2023 wird berichtet, dass nahezu alle Befragten Stack Overflow besucht haben und ein Großteil die Plattform regelmäßig nutzt (z.\,B.\ mindestens wöchentlich oder mehrmals pro Monat) \cite{StackOverflowSurvey2023}.
+Im Stack Overflow Developer Survey 2023 wird berichtet, dass nahezu alle Befragten Stack Overflow besucht haben und ein Großteil die Plattform regelmäßig nutzt (z.\,B.\ mindestens wöchentlich oder mehrmals pro Monat) \vglcite{StackOverflowSurvey2023}.
 Dieses Wissen ist jedoch nicht zeitlos: Bibliotheken, Frameworks und \acs{API}s entwickeln sich weiter, Sicherheitsanforderungen ändern sich und Best Practices werden angepasst.
-Dadurch können ehemals korrekte Antworten veralten und -- insbesondere bei unkritischer Wiederverwendung -- Fehlentscheidungen oder fehlerhafte Implementierungen begünstigen \cite{Zhang2019ObsoleteAnswers}.
+Dadurch können ehemals korrekte Antworten veralten und -- insbesondere bei unkritischer Wiederverwendung -- Fehlentscheidungen oder fehlerhafte Implementierungen begünstigen \vglcite{Zhang2019ObsoleteAnswers}.
 
 Die empirische Untersuchung von Zhang et al.\ zeigt, dass veraltete Antworten auf Stack Overflow verbreitet sind und nur ein vergleichsweise kleiner Anteil tatsächlich nachträglich aktualisiert wird \cite{Zhang2019ObsoleteAnswers}.
 Hinzu kommt, dass Stack Overflow häufig als Quelle für direkt übernommene Code-Snippets dient.
 Fischer et al.\ zeigen am Beispiel sicherheitsrelevanter Snippets, dass unsichere Codebeispiele aus Stack Overflow in großem Umfang in reale Software kopiert werden und dadurch Sicherheitsrisiken in die Praxis gelangen können \cite{Fischer2017SOHarmful}.
 
-Als struktureller Treiber der Obsoleszenz wirkt zudem die \acs{API}-Evolution: Wird eine \acs{API} (teilweise) deprecated oder entfernt, können vormals funktionierende Beispiele später irreführend oder falsch werden \cite{ZhouWalker2016Deprecation}.
+Als struktureller Treiber der Obsoleszenz wirkt zudem die \acs{API}-Evolution: Wird eine \acs{API} (teilweise) deprecated oder entfernt, können vormals funktionierende Beispiele später irreführend oder falsch werden \vglcite{ZhouWalker2016Deprecation}.
 Die Analyse von Zhou und Walker zeigt für Android-bezogene Beiträge auf Stack Overflow, dass deprecated \acs{API}-Nutzung in akzeptierten Antworten häufig vorkommt und nur selten explizit als solche kenntlich gemacht wird \cite{ZhouWalker2016Deprecation}.
 
 Damit wird deutlich, dass \glqq Korrektheit\grqq{} auf Stack Overflow nicht nur eine Frage der ursprünglichen Antwortqualität ist, sondern auch der fortlaufenden Wartung.
 Die Pflege veraltender Inhalte ist auf Stack Overflow jedoch nicht trivial, da Beiträge über Zeit in einem komplexen Zusammenspiel aus Edits und Community-Interaktionen entstehen.
 Baltes et al.\ rekonstruieren mit \acs{SOTorrent} die Evolution von Posts (u.\,a.\ auf Ebene einzelner Text- und Code-Blöcke) und machen dadurch sichtbar, dass Änderungen häufig eng mit der Diskussionshistorie verknüpft sind \cite{Baltes2018SOTorrent}.
 
-Gerade Kommentare sind hierbei relevant, weil sie häufig Hinweise auf Bugs, Obsoleszenz oder bessere Alternativen enthalten und als Auslöser für nachträgliche Verbesserungen dienen können \cite{Sheikhaei2023URC,SoniNadi2019CommentUpdates}.
+Gerade Kommentare sind hierbei relevant, weil sie häufig Hinweise auf Bugs, Obsoleszenz oder bessere Alternativen enthalten und als Auslöser für nachträgliche Verbesserungen dienen können \vglcite{Sheikhaei2023URC,SoniNadi2019CommentUpdates}.
 Parallel dazu verändern große Sprachmodelle (\acs{LLM}s) das Informationsverhalten von Entwicklerinnen und Entwicklern.
 Die empirische Studie von Kabir et al.\ vergleicht \acs{LLM}-Antworten direkt mit Stack-Overflow-Antworten und zeigt, dass \acs{LLM}-Ausgaben trotz hoher Nützlichkeit relevante Qualitätsprobleme aufweisen können (z.\,B.\ Korrektheit und Verlässlichkeit) \cite{Kabir2024IsSOObsolete}.
 
@@ -78,12 +74,12 @@ Del Rio-Chanona et al.\ berichten Hinweise darauf, dass die Nutzung von \acs{LLM
 \subsection{Forschungsfrage und Beitrag}
 Vor diesem Hintergrund untersucht diese Arbeit die folgende Forschungsfrage:
 \emph{Wie können Kommentare auf Stack Overflow genutzt werden, um veraltete oder fehlerhafte Antworten systematisch zu aktualisieren?}
-Als konkreter Ankerpunkt dient eine aktuelle Arbeit auf der \acs{ICSE} 2025 (\acs{SOUP}), die Aktualisierungen von Stack-Overflow-Posts automatisiert, indem sie Kommentar--Edit-Beziehungen modelliert und daraus Edit-Vorschläge generiert \cite{Mai2025SOUP}.
+Als konkreter Ankerpunkt dient eine aktuelle Arbeit auf der \acs{ICSE} 2025 (\acs{SOUP}), die Aktualisierungen von Stack-Overflow-Posts automatisiert, indem sie Kommentar--Edit-Beziehungen modelliert und daraus Edit-Vorschläge generiert \vglcite{Mai2025SOUP}.
 
 Auf dieser Basis leistet das Paper drei Beiträge:
-(1) Einordnung des Forschungsstands zu veralteten Antworten, Plattform-Evolution und comment-getriebenen Updates \cite{Zhang2019ObsoleteAnswers,Baltes2018SOTorrent,Sheikhaei2023URC,SoniNadi2019CommentUpdates},
-(2) strukturierte Darstellung der \acs{SOUP}-Fallstudie (Ziel, Pipeline, Datengrundlage und Evaluation) \cite{Mai2025SOUP}
-und (3) Diskussion eines praktikablen, hybriden Vorgehens (\acs{KI}-Vorschläge + menschliche Validierung) sowie einer kontextuellen Einordnung, warum Plattformpflege auch im Umfeld großer Sprachmodelle relevant bleibt \cite{delRioChanona2024KnowledgeSharing,Kabir2024IsSOObsolete}.
+(1) Einordnung des Forschungsstands zu veralteten Antworten, Plattform-Evolution und comment-getriebenen Updates \vglcite{Zhang2019ObsoleteAnswers,Baltes2018SOTorrent,Sheikhaei2023URC,SoniNadi2019CommentUpdates},
+(2) strukturierte Darstellung der \acs{SOUP}-Fallstudie (Ziel, Pipeline, Datengrundlage und Evaluation) \vglcite{Mai2025SOUP}
+und (3) Diskussion eines praktikablen, hybriden Vorgehens (\acs{KI}-Vorschläge + menschliche Validierung) sowie einer kontextuellen Einordnung, warum Plattformpflege auch im Umfeld großer Sprachmodelle relevant bleibt \vglcite{delRioChanona2024KnowledgeSharing,Kabir2024IsSOObsolete}.
 
 \subsection{Aufbau der Arbeit}
 Die Arbeit gliedert sich in mehrere Abschnitte, die vom Problemkontext zur Fallstudie und deren Einordnung führen.
@@ -100,20 +96,20 @@ Der Anhang dokumentiert die Nutzung von \acs{LLM}s und die verwendeten Prompts g
 \section{Hintergrund}\label{sec:hintergrund}
 \subsection{Stack Overflow als Wissensplattform}
 Stack Overflow ist eine kollaborative \acs{QA}-Plattform, auf der technische Probleme in Form von Fragen und Antworten dokumentiert, bewertet und kuratiert werden.
-Die Nutzung ist breit verankert: In der Stack Overflow Survey 2023 geben 92{,}5\,\% der Befragten an, Stack Overflow mindestens wöchentlich oder mehrere Male pro Monat zu besuchen \cite{StackOverflowSurvey2023}.
+Die Nutzung ist breit verankert: In der Stack Overflow Survey 2023 geben 92{,}5\,\% der Befragten an, Stack Overflow mindestens wöchentlich oder mehrere Male pro Monat zu besuchen \vglcite{StackOverflowSurvey2023}.
 
 Damit fungiert die Plattform in vielen Entwicklungsprozessen als erste Anlaufstelle und prägt sowohl individuelle Problemlösestrategien als auch kollektive Wissensbestände.
 Charakteristisch ist zudem, dass Inhalte nicht als statische Veröffentlichungen angelegt sind, sondern als Artefakte, die durch Community-Interaktionen fortlaufend weiterentwickelt werden können.
 Beiträge besitzen eine Versionshistorie (Edits) und werden typischerweise durch soziale Signale (z.\,B.\ Bewertungen, Akzeptieren von Antworten) sichtbar gemacht und priorisiert.
 
-Dabei können auch Nutzerinnen und Nutzer ohne volle Bearbeitungsrechte Änderungen vorschlagen, die anschließend über Review-Prozesse bestätigt oder verworfen werden \cite{StackOverflowHelpEditing}.
+Dabei können auch Nutzerinnen und Nutzer ohne volle Bearbeitungsrechte Änderungen vorschlagen, die anschließend über Review-Prozesse bestätigt oder verworfen werden \vglcite{StackOverflowHelpEditing}.
 In der Praxis entsteht so ein Spannungsfeld zwischen (i) schneller Problemlösung im Moment der Erstellung und (ii) langfristiger Wartbarkeit als öffentliches Wissensartefakt.
 Für wissenschaftliche Analysen ist außerdem relevant, dass ein großer Teil der Inhalte maschinell auswertbar verfügbar ist.
-Seit 2009 werden anonymisierte Daten-Dumps für Stack-Exchange-Seiten veröffentlicht und u.\,a.\ über das Internet Archive bereitgestellt \cite{StackExchangeDataDumpBlog2014}.
+Seit 2009 werden anonymisierte Daten-Dumps für Stack-Exchange-Seiten veröffentlicht und u.\,a.\ über das Internet Archive bereitgestellt \vglcite{StackExchangeDataDumpBlog2014}.
 
-Die zugehörige Lizenzinformation wird zusammen mit dem Dump ausgeliefert \cite{StackExchangeLicenseTxt}.
-Zusätzlich war Stack-Overflow-Datenmaterial in der Vergangenheit als öffentlicher Datensatz auch über BigQuery verfügbar, was die Abfrage und Replikation empirischer Analysen erleichtert \cite{StackOverflowBigQuery2016}.
-Aus Sicht der Nachvollziehbarkeit ist schließlich wichtig, dass Stack-Overflow-Inhalte unter \acs{CCBYSA}-Lizenzen stehen und der Lizenzstatus zeitlich bzw.\ versioniert differenziert ist \cite{StackOverflowHelpLicensing,StackExchangeCCBYSA2019}.
+Die zugehörige Lizenzinformation wird zusammen mit dem Dump ausgeliefert \vglcite{StackExchangeLicenseTxt}.
+Zusätzlich war Stack-Overflow-Datenmaterial in der Vergangenheit als öffentlicher Datensatz auch über BigQuery verfügbar, was die Abfrage und Replikation empirischer Analysen erleichtert \vglcite{StackOverflowBigQuery2016}.
+Aus Sicht der Nachvollziehbarkeit ist schließlich wichtig, dass Stack-Overflow-Inhalte unter \acs{CCBYSA}-Lizenzen stehen und der Lizenzstatus zeitlich bzw.\ versioniert differenziert ist \vglcite{StackOverflowHelpLicensing,StackExchangeCCBYSA2019}.
 
 Auf dieser Grundlage entstanden Forschungsinfrastrukturen wie \acs{SOTorrent}, die die Evolution von Beiträgen rekonstruieren und Analysen der Veränderungen auf Ebene einzelner Text- und Code-Blöcke ermöglichen \cite{Baltes2018SOTorrent}.
 Solche Datensätze sind für Wartungs- und Aktualisierungsfragen besonders geeignet, weil sie die Plattform nicht nur als Sammlung von Endzuständen, sondern als Prozess historischer Veränderungen abbilden.
@@ -138,7 +134,7 @@ Daraus folgt ein Bedarf an Mechanismen, die Wartungsbedarf später im Lebenszykl
 
 \subsection{Kommentare als Signal für Updates}
 Kommentare sind ein zentrales Interaktionsmedium auf Stack Overflow und werden häufig zur Einordnung, Korrektur und Verbesserung von Fragen und Antworten genutzt.
-Die Plattform beschreibt Kommentare explizit als Mittel, um Verbesserungen vorzuschlagen oder Klärungen anzufordern \cite{StackOverflowCommentGuidance}.
+Die Plattform beschreibt Kommentare explizit als Mittel, um Verbesserungen vorzuschlagen oder Klärungen anzufordern \vglcite{StackOverflowCommentGuidance}.
 Aus Wartungsperspektive sind Kommentare besonders wertvoll, weil sie häufig zeitnäher als formale Edits auf neue Probleme reagieren.
 So können Nutzerinnen und Nutzer auf Obsoleszenz, Bugs oder bessere Alternativen hinweisen, ohne sofort einen vollständigen Edit zu erstellen.
 
@@ -156,7 +152,7 @@ Die Methodik ist explorativ-deskriptiv angelegt und zielt auf nachvollziehbare S
 
 Die einzelnen Schritte der Literatursichtung und des Auswahlprozesses sind in Tabelle~\ref{tab:method_overview} zusammengefasst.
 
-% --- TABELLE 1 (KORRIGIERT: BOOKTABS) ---
+% --- TABELLE 1 ---
 \begin{table}[ht]
 \centering
 \caption{Kompakter Überblick über Vorgehen und Auswahlprozess.}
@@ -167,15 +163,15 @@ Die einzelnen Schritte der Literatursichtung und des Auswahlprozesses sind in Ta
 \toprule
 \textbf{Aspekt} & \textbf{Umsetzung in dieser Arbeit} \\
 \midrule
-Studiendesign   &
+Studiendesign   &
 Literaturbasierte Synthese + dokumentenbasierte Analyse des Frameworks \acs{SOUP}.\\
-Suchraum        &
+Suchraum        &
 Primärquellen aus den im Paper zitierten Publikationen; ergänzend Snowballing (Backward/Forward) ausgehend von Kernarbeiten \cite{Wohlin2014Snowballing}.\\
-Screening       &
+Screening       &
 Zweistufig (Titel/Abstract $\rightarrow$ Volltext). Ausschluss bei fehlendem Bezug, Duplikaten oder fehlendem Volltext (PDF im ZIP).\\
-Extraktion      &
+Extraktion      &
 Pro Quelle: Kontext/Datenbasis, Obsoleszenzbezug, Kommentarrolle, Interventionslogik, Evaluation und Limitationen.\\
-Bewertung       &
+Bewertung       &
 Einordnung entlang D1--D3 (0=nein, 1=teilweise, 2=klar/evidenzbasiert).\\
 \bottomrule
 \end{tabular}
@@ -187,7 +183,8 @@ Die Literaturerhebung erfolgte in zwei Schritten:
 \item \textbf{Gezielte Primärsuche} anhand von Suchbegriffen, die direkt aus der Forschungsfrage abgeleitet wurden.
 \item \textbf{Erweiterung durch Snowballing} (Backward/Forward) ausgehend von einem Startset zentraler Arbeiten \cite{Wohlin2014Snowballing}.
 \end{enumerate}
-Das Vorgehen orientiert sich an etablierten Leitlinien zur strukturierten Literatursuche und transparenten Dokumentation von Ein- und Ausschlussentscheidungen \cite{KitchenhamCharters2007SLR}.
+Die Suche erfolgte primär in den Datenbanken Google Scholar, IEEE Xplore und der ACM Digital Library sowie ergänzend im direkten Umfeld der identifizierten Kernpublikationen.
+Das Vorgehen orientiert sich an etablierten Leitlinien zur strukturierten Literatursuche und transparenten Dokumentation von Ein- und Ausschlussentscheidungen \vglcite{KitchenhamCharters2007SLR}.
 
 \textbf{Suchbegriffe.}
 Verwendet wurden Kombinationen aus Begriffen der folgenden Gruppen:
@@ -219,17 +216,17 @@ Zur Veranschaulichung werden die wichtigsten Quellen entlang dieser drei Dimensi
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{p{0.62\linewidth} c c c}
 \toprule
-\textbf{Quelle}                                                                      & \textbf{D1} & \textbf{D2} & \textbf{D3} \\
+\textbf{Quelle}                                                                      & \textbf{D1} & \textbf{D2} & \textbf{D3} \\
 \midrule
-Zhang et al.\ (Obsoleszenz)~\cite{Zhang2019ObsoleteAnswers}                          & 2           & 0           & 1           \\
-Zhou \& Walker (Deprecation)~\cite{ZhouWalker2016Deprecation}                        & 2           & 0           & 1           \\
-Fischer et al.\ (Copy/Paste-Risiko)~\cite{Fischer2017SOHarmful}                      & 2           & 0           & 1           \\
-Baltes et al.\ (\acs{SOTorrent})~\cite{Baltes2018SOTorrent}                          & 1           & 1           & 2           \\
-Soni \& Nadi (comment-induced updates)~\cite{SoniNadi2019CommentUpdates}             & 1           & 2           & 1           \\
-Sheikhaei et al.\ (\acs{URC})~\cite{Sheikhaei2023URC}                                & 1           & 2           & 1           \\
-Mai et al.\ (\acs{SOUP})~\cite{Mai2025SOUP}                                          & 2           & 2           & 2           \\
-Kabir et al.\ (\acs{LLM} vs.\ Stack Overflow)~\cite{Kabir2024IsSOObsolete}           & 1           & 0           & 1           \\
-Del Rio-Chanona et al.\ (Knowledge Sharing)~\cite{delRioChanona2024KnowledgeSharing} & 1           & 0           & 1           \\
+Zhang et al.\ (Obsoleszenz)~\cite{Zhang2019ObsoleteAnswers}                          & 2           & 0           & 1           \\
+Zhou \& Walker (Deprecation)~\cite{ZhouWalker2016Deprecation}                        & 2           & 0           & 1           \\
+Fischer et al.\ (Copy/Paste-Risiko)~\cite{Fischer2017SOHarmful}                      & 2           & 0           & 1           \\
+Baltes et al.\ (\acs{SOTorrent})~\cite{Baltes2018SOTorrent}                          & 1           & 1           & 2           \\
+Soni \& Nadi (comment-induced updates)~\cite{SoniNadi2019CommentUpdates}             & 1           & 2           & 1           \\
+Sheikhaei et al.\ (\acs{URC})~\cite{Sheikhaei2023URC}                                & 1           & 2           & 1           \\
+Mai et al.\ (\acs{SOUP})~\cite{Mai2025SOUP}                                          & 2           & 2           & 2           \\
+Kabir et al.\ (\acs{LLM} vs.\ Stack Overflow)~\cite{Kabir2024IsSOObsolete}           & 1           & 0           & 1           \\
+Del Rio-Chanona et al.\ (Knowledge Sharing)~\cite{delRioChanona2024KnowledgeSharing} & 1           & 0           & 1           \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -237,9 +234,9 @@ Del Rio-Chanona et al.\ (Knowledge Sharing)~\cite{delRioChanona2024KnowledgeShar
 % -------------------------------------------------------
 \section{Dokumentenbasierte Analyse: Automatisiertes Aktualisieren von Stack-Overflow-Posts (\acs{SOUP})}\label{sec:soup}
 \subsection{Problemstellung und Überblick}
-Im Mittelpunkt dieser Analyse steht \acs{SOUP}, ein \acs{LLM}-basiertes Framework, das Code-Snippets in Stack-Overflow-Antworten anhand der zugehörigen Kommentare automatisiert aktualisiert \cite{Mai2025SOUP}.
-Damit adressiert der Ansatz eine zentrale Lücke der Plattformpflege: Kommentare enthalten häufig konkrete Hinweise auf Fehler, Obsoleszenz oder Qualitätsprobleme, werden jedoch in der Praxis oft nicht in den eigentlichen Antworttext übernommen \cite{Mai2025SOUP}.
-Konzeptionell zerlegt \acs{SOUP} das Problem des „automatischen Post-Updating“ in zwei aufeinander aufbauende Phasen (\acs{VCP} und \acs{APU}), die in \autoref{fig:soup-pipeline} schematisch dargestellt sind \cite{Mai2025SOUP}.
+Im Mittelpunkt dieser Analyse steht \acs{SOUP}, ein \acs{LLM}-basiertes Framework, das Code-Snippets in Stack-Overflow-Antworten anhand der zugehörigen Kommentare automatisiert aktualisiert \vglcite{Mai2025SOUP}.
+Damit adressiert der Ansatz eine zentrale Lücke der Plattformpflege: Kommentare enthalten häufig konkrete Hinweise auf Fehler, Obsoleszenz oder Qualitätsprobleme, werden jedoch in der Praxis oft nicht in den eigentlichen Antworttext übernommen \vglcite{Mai2025SOUP}.
+Konzeptionell zerlegt \acs{SOUP} das Problem des „automatischen Post-Updating“ in zwei aufeinander aufbauende Phasen (\acs{VCP} und \acs{APU}), die in \autoref{fig:soup-pipeline} schematisch dargestellt sind \vglcite{Mai2025SOUP}.
 
 \begin{figure}[ht]
 \centering
@@ -248,40 +245,40 @@ Konzeptionell zerlegt \acs{SOUP} das Problem des „automatischen Post-Updating�
 \label{fig:soup-pipeline}
 \end{figure}
 
-Zunächst wird geprüft, ob ein Kommentar tatsächlich eine spätere Änderung (Edit) ausgelöst hat (\acs{VCP}, Valid Comment-Edit Pair Prediction) \cite{Mai2025SOUP}.
-Dazu werden Kommentar--Edit-Paare, wie im oberen Teil von \autoref{fig:soup-pipeline} dargestellt, gefiltert und klassifiziert \cite{Mai2025SOUP}.
-Im Anschluss wird aus Kommentar und ursprünglichem Post eine konkrete Aktualisierung erzeugt (\acs{APU}, Automated Post Update), sodass der aktualisierte Post beziehungsweise das Code-Snippet entsteht, wie im unteren Teil der Grafik skizziert \cite{Mai2025SOUP}.
+Zunächst wird geprüft, ob ein Kommentar tatsächlich eine spätere Änderung (Edit) ausgelöst hat (\acs{VCP}, Valid Comment-Edit Pair Prediction) \vglcite{Mai2025SOUP}.
+Dazu werden Kommentar--Edit-Paare, wie im oberen Teil von \autoref{fig:soup-pipeline} dargestellt, gefiltert und klassifiziert \vglcite{Mai2025SOUP}.
+Im Anschluss wird aus Kommentar und ursprünglichem Post eine konkrete Aktualisierung erzeugt (\acs{APU}, Automated Post Update), sodass der aktualisierte Post beziehungsweise das Code-Snippet entsteht, wie im unteren Teil der Grafik skizziert \vglcite{Mai2025SOUP}.
 
 \subsection{Aufgaben und Datengrundlage (\acs{VCP}/\acs{APU})}
 \subsubsection{Aufgabe 1: \acs{VCP} als Qualitätsfilter für Kommentar--Edit-Paare}
-Die Phase \acs{VCP} modelliert die Frage, ob ein gegebenes Kommentar--Edit-Paar als \emph{valid} einzustufen ist \cite{Mai2025SOUP}.
-Als valide gelten Paare nur dann, wenn (i) der Kommentar für das Edit relevant ist, (ii) das Edit die im Kommentar angesprochenen Punkte tatsächlich adressiert und (iii) das Edit keine zusätzlichen, nicht durch den Kommentar motivierten Änderungen einführt \cite{Mai2025SOUP}.
-Zur Umsetzung werden Kommentar--Edit-Paare manuell annotiert und anschließend ein \acs{LLM} (CodeLlama) mittels \acs{LoRA} feinjustiert, um valide von nicht-validen Paaren zu unterscheiden \cite{Mai2025SOUP}.
-Auf dieser Grundlage entsteht ein großskaliger, qualitätsgefilterter Korpus an validen Kommentar--Edit-Paaren \cite{Mai2025SOUP}.
+Die Phase \acs{VCP} modelliert die Frage, ob ein gegebenes Kommentar--Edit-Paar als \emph{valid} einzustufen ist \vglcite{Mai2025SOUP}.
+Als valide gelten Paare nur dann, wenn (i) der Kommentar für das Edit relevant ist, (ii) das Edit die im Kommentar angesprochenen Punkte tatsächlich adressiert und (iii) das Edit keine zusätzlichen, nicht durch den Kommentar motivierten Änderungen einführt \vglcite{Mai2025SOUP}.
+Zur Umsetzung werden Kommentar--Edit-Paare manuell annotiert und anschließend ein \acs{LLM} (CodeLlama) mittels \acs{LoRA} feinjustiert, um valide von nicht-validen Paaren zu unterscheiden \vglcite{Mai2025SOUP}.
+Auf dieser Grundlage entsteht ein großskaliger, qualitätsgefilterter Korpus an validen Kommentar--Edit-Paaren \vglcite{Mai2025SOUP}.
 
 \subsubsection{Aufgabe 2: \acs{APU} als Generierungsproblem}
-Aufbauend auf \acs{VCP} ist \acs{APU} als Generierungsaufgabe definiert \cite{Mai2025SOUP}.
-Gegeben sind ein Post \emph{vor} der Änderung sowie ein zugehöriger Kommentar; das Ziel besteht darin, den Post \emph{nach} der Änderung zu erzeugen \cite{Mai2025SOUP}.
-Der Ansatz fokussiert dabei die Aktualisierung von Code-Snippets und nutzt einen Datensatz mit rund 78\,000 validen Paaren für Java, die aus Stack-Overflow-Edit-Historien und Kommentaren abgeleitet und durch \acs{VCP} qualitätsgesichert werden \cite{Mai2025SOUP}.
+Aufbauend auf \acs{VCP} ist \acs{APU} als Generierungsaufgabe definiert \vglcite{Mai2025SOUP}.
+Gegeben sind ein Post \emph{vor} der Änderung sowie ein zugehöriger Kommentar; das Ziel besteht darin, den Post \emph{nach} der Änderung zu erzeugen \vglcite{Mai2025SOUP}.
+Der Ansatz fokussiert dabei die Aktualisierung von Code-Snippets und nutzt einen Datensatz mit rund 78\,000 validen Paaren für Java, die aus Stack-Overflow-Edit-Historien und Kommentaren abgeleitet und durch \acs{VCP} qualitätsgesichert werden \vglcite{Mai2025SOUP}.
 
 \subsection{Evaluation und zentrale Ergebnisse}
 \subsubsection{Offline-Evaluation: \acs{VCP} und \acs{APU}}
-In der Offline-Evaluation erreicht das für \acs{SOUP} trainierte \acs{VCP}-Modell eine Präzision von 80{,}8\,\% sowie einen Recall von 74{,}0\,\% \cite{Mai2025SOUP}.
-Für \acs{APU} wird unter anderem eine Exact-Match-Rate von 25{,}6\,\% berichtet \cite{Mai2025SOUP}.
+In der Offline-Evaluation erreicht das für \acs{SOUP} trainierte \acs{VCP}-Modell eine Präzision von 80{,}8\,\% sowie einen Recall von 74{,}0\,\% \vglcite{Mai2025SOUP}.
+Für \acs{APU} wird unter anderem eine Exact-Match-Rate von 25{,}6\,\% berichtet \vglcite{Mai2025SOUP}.
 
 \subsubsection{In-the-wild-Evaluation: Praktische Umsetzbarkeit auf Stack Overflow}
-Zusätzlich wird eine In-the-wild-Evaluation direkt auf Stack Overflow durchgeführt \cite{Mai2025SOUP}.
-Dabei werden 50 von \acs{SOUP} erzeugte Edits manuell eingereicht; 21 dieser Änderungen werden von Maintainers verifiziert und akzeptiert \cite{Mai2025SOUP}.
+Zusätzlich wird eine In-the-wild-Evaluation direkt auf Stack Overflow durchgeführt \vglcite{Mai2025SOUP}.
+Dabei werden 50 von \acs{SOUP} erzeugte Edits manuell eingereicht; 21 dieser Änderungen werden von Maintainers verifiziert und akzeptiert \vglcite{Mai2025SOUP}.
 
 \subsubsection{Einordnung}
-Insgesamt deuten die Ergebnisse darauf hin, dass automatisierte Aktualisierung vor allem dann praktikabel ist, wenn (i) Kommentare zuverlässig mit konkreten Edit-Intentionen verknüpft werden können und (ii) die Generierung auf einem hinreichend sauberen, domänenspezifischen Datensatz basiert \cite{Mai2025SOUP}.
-Entsprechend ist \acs{SOUP} nicht als Ersatz menschlicher Wartung zu verstehen, sondern als Mechanismus, der Wartungsbedarf sichtbar macht und Vorschläge liefert, die anschließend im Community-Prozess validiert werden \cite{Mai2025SOUP}.
+Insgesamt deuten die Ergebnisse darauf hin, dass automatisierte Aktualisierung vor allem dann praktikabel ist, wenn (i) Kommentare zuverlässig mit konkreten Edit-Intentionen verknüpft werden können und (ii) die Generierung auf einem hinreichend sauberen, domänenspezifischen Datensatz basiert \vglcite{Mai2025SOUP}.
+Entsprechend ist \acs{SOUP} nicht als Ersatz menschlicher Wartung zu verstehen, sondern als Mechanismus, der Wartungsbedarf sichtbar macht und Vorschläge liefert, die anschließend im Community-Prozess validiert werden \vglcite{Mai2025SOUP}.
 
 % -------------------------------------------------------
 \section{Diskussion}\label{sec:diskussion}
 \subsection{Warum Plattformpflege trotz \acs{LLM}s relevant bleibt}
 Die Ergebnisse deuten darauf hin, dass Plattformpflege auf Stack Overflow auch im Zeitalter von \acs{LLM}s relevant bleibt.
-Zum einen bleibt Obsoleszenz ein strukturelles Problem: Bibliotheken, Frameworks und \acs{API}s entwickeln sich weiter, sodass ehemals korrekte Antworten veralten~\cite{Zhang2019ObsoleteAnswers,ZhouWalker2016Deprecation}.
+Zum einen bleibt Obsoleszenz ein strukturelles Problem: Bibliotheken, Frameworks und \acs{API}s entwickeln sich weiter, sodass ehemals korrekte Antworten veralten~\vglcite{Zhang2019ObsoleteAnswers,ZhouWalker2016Deprecation}.
 Darüber hinaus zeigt die empirische Untersuchung von Zhang et al.\, dass veraltete Antworten verbreitet sind und nur ein relativ kleiner Anteil nachträglich aktualisiert wird~\cite{Zhang2019ObsoleteAnswers}.
 
 Zum anderen verstärkt das Nutzungsmuster die praktische Relevanz: Code-Snippets werden häufig direkt übernommen.
@@ -295,7 +292,7 @@ Damit bleibt eine gepflegte und aktualisierte Wissensbasis auf Plattformen wie S
 
 \subsection{Implikationen: Hybrides Modell (\acs{KI} + menschliche Validierung)}
 Die Fallstudie \acs{SOUP} legt nahe, dass ein hybrides Pflegekonzept praktikabler ist als eine vollständig automatisierte Aktualisierung.
-In der \acs{SOUP}-Studie zeigt sich, dass kommentarbasiertes Post-Updating technisch umsetzbar ist und in realen Plattformprozessen Wirkung entfalten kann; zugleich bleibt menschliche Prüfung zentral, um Kontext, Korrektheit und Plattformstandards sicherzustellen~\cite{Mai2025SOUP}.
+In der \acs{SOUP}-Studie zeigt sich, dass kommentarbasiertes Post-Updating technisch umsetzbar ist und in realen Plattformprozessen Wirkung entfalten kann; zugleich bleibt menschliche Prüfung zentral, um Kontext, Korrektheit und Plattformstandards sicherzustellen~\vglcite{Mai2025SOUP}.
 Automatisierung kann dabei helfen, Wartungsbedarf sichtbar zu machen und konkrete Vorschläge zu erzeugen, ersetzt aber nicht die abschließende Entscheidung durch die Community.
 Daraus lässt sich ableiten, dass \acs{LLM}-basierte Systeme vor allem als Vorschlags- und Priorisierungshilfe geeignet sind, während Verantwortung und finale Entscheidung bei Menschen verbleiben sollten.
 
@@ -304,27 +301,26 @@ Im Folgenden werden drei Empfehlungen (R1--R3) formuliert, die sich aus der Anal
 
 \subsubsection{(R1) Kommentar-Signale gezielt in Pflege-Workflows überführen}
 Kommentare mit Update-Charakter sollten (semi-)automatisch erkannt und in Wartungsaufgaben überführt werden.
-Die Analysen zu comment-induced updates und \acs{URC}s zeigen, dass Kommentare häufig konkrete Änderungsbedarfe identifizieren und mit späteren Aktualisierungen von Antworten zusammenhängen~\cite{SoniNadi2019CommentUpdates,Sheikhaei2023URC}.
+Die Analysen zu comment-induced updates und \acs{URC}s zeigen, dass Kommentare häufig konkrete Änderungsbedarfe identifizieren und mit späteren Aktualisierungen von Antworten zusammenhängen~\vglcite{SoniNadi2019CommentUpdates,Sheikhaei2023URC}.
 Plattformen könnten solche Kommentar-Signale explizit nutzen, um potenziell veraltete oder fehlerhafte Beiträge zu markieren und in Review-Prozesse einzuspeisen.
 
 \subsubsection{(R2) Automatisierte Vorschläge nur mit Qualitätsgates und Review-Pflicht}
-Aus der \acs{SOUP}-Fallstudie wird die Bedeutung von Qualitätsgates wie \acs{VCP} für saubere Datensätze und belastbare Vorschläge deutlich~\cite{Mai2025SOUP}.
+Aus der \acs{SOUP}-Fallstudie wird die Bedeutung von Qualitätsgates wie \acs{VCP} für saubere Datensätze und belastbare Vorschläge deutlich~\vglcite{Mai2025SOUP}.
 Automatisierte Aktualisierung sollte daher nur mit vorgelagerten Qualitätsfiltern und einer klaren Review-Pflicht durch menschliche Nutzerinnen und Nutzer eingesetzt werden.
-Gerade in sicherheitsrelevanten Kontexten ist eine konservative Qualitätssicherung entscheidend, da unsichere Codebeispiele reale Risiken in Anwendungen erzeugen können~\cite{Fischer2017SOHarmful}.
+Gerade in sicherheitsrelevanten Kontexten ist eine konservative Qualitätssicherung entscheidend, da unsichere Codebeispiele reale Risiken in Anwendungen erzeugen können~\vglcite{Fischer2017SOHarmful}.
 
 \subsubsection{(R3) Anreize und \acs{UI}/\acs{UX}-Unterstützung für Wartung erhöhen}
-Da ein wesentlicher Anteil veralteter Antworten nicht aktualisiert wird, sind Anreiz- und Sichtbarkeitsmechanismen für Wartung besonders relevant~\cite{Zhang2019ObsoleteAnswers}.
-Unterstützend wirken beispielsweise klare Edit-Guidelines~\cite{StackOverflowHelpEditing,StackOverflowCommentGuidance}; ergänzend kommen sichtbare Wartungsqueues sowie die Belohnung qualitativ geprüfter Updates (z.\,B.\ Badges oder Reputation) in Frage.
-Im \acs{LLM}-Zeitalter ist dies besonders wichtig, wenn öffentliche Aktivität und Wissensteilung in Communities tendenziell abnehmen~\cite{delRioChanona2024KnowledgeSharing}.
+Da ein wesentlicher Anteil veralteter Antworten nicht aktualisiert wird, sind Anreiz- und Sichtbarkeitsmechanismen für Wartung besonders relevant~\vglcite{Zhang2019ObsoleteAnswers}.
+Unterstützend wirken beispielsweise klare Edit-Guidelines~\vglcite{StackOverflowHelpEditing,StackOverflowCommentGuidance}; ergänzend kommen sichtbare Wartungsqueues sowie die Belohnung qualitativ geprüfter Updates (z.\,B.\ Badges oder Reputation) in Frage.
+Im \acs{LLM}-Zeitalter ist dies besonders wichtig, wenn öffentliche Aktivität und Wissensteilung in Communities tendenziell abnehmen~\vglcite{delRioChanona2024KnowledgeSharing}.
 
 % -------------------------------------------------------
 \section{Limitationen}\label{sec:limitationen}
-\section{Limitationen}\label{sec:limitationen}
 \subsection{Generalisierbarkeit und Bias}
 Die Ergebnisse sind durch mehrere Faktoren begrenzt.
-Erstens basiert die Arbeit auf einer literaturbasierten Synthese mit einer fokussierten Fallstudie, sodass Befunde zu Obsoleszenz und kommentarbasierten Update-Signalen zusammengeführt werden~\cite{Zhang2019ObsoleteAnswers,Sheikhaei2023URC,SoniNadi2019CommentUpdates}.
+Erstens basiert die Arbeit auf einer literaturbasierten Synthese mit einer fokussierten Fallstudie, sodass Befunde zu Obsoleszenz und kommentarbasierten Update-Signalen zusammengeführt werden~\vglcite{Zhang2019ObsoleteAnswers,Sheikhaei2023URC,SoniNadi2019CommentUpdates}.
 Die Einordnung bleibt jedoch abhängig von der verfügbaren Evidenz und von der Auswahl der betrachteten Arbeiten.
-Im Rahmen literaturbasierter Synthesen sind Zitations- und Publikationsbias möglich~\cite{KitchenhamCharters2007SLR,Wohlin2014Snowballing}.
+Im Rahmen literaturbasierter Synthesen sind Zitations- und Publikationsbias möglich~\vglcite{KitchenhamCharters2007SLR,Wohlin2014Snowballing}.
 
 Zweitens ist Obsoleszenz in der Literatur nicht einheitlich operationalisiert.
 Die Studie von Zhang et al.\ betrachtet unterschiedliche Formen von Obsoleszenz~\cite{Zhang2019ObsoleteAnswers},
@@ -333,43 +329,44 @@ Dies erschwert die direkte Vergleichbarkeit der Ergebnisse.
 
 Drittens ist die betrachtete Evidenz teilweise domänenspezifisch.
 Die Studie von Fischer et al.\ fokussiert sicherheitsrelevante Android-Szenarien~\cite{Fischer2017SOHarmful},
-und \acs{SOUP} ist in dieser Arbeit primär als Java-zentrierter Ansatz relevant \cite{Mai2025SOUP}.
+und \acs{SOUP} ist in dieser Arbeit primär als Java-zentrierter Ansatz relevant \vglcite{Mai2025SOUP}.
 Dies schränkt die Übertragbarkeit auf sprachempfindliche Sprachen (wie Python) ein, bei denen syntaktische Strukturen durch Einrückungen definiert werden und Syntaxfehler durch LLM-generierte Edits wahrscheinlicher sind.
-Viertens kann Selektionsbias in der Signalquelle „Kommentar“ auftreten, da nicht alle Posts in vergleichbarer Weise kommentiert werden~\cite{SoniNadi2019CommentUpdates,Sheikhaei2023URC}.
+Viertens kann Selektionsbias in der Signalquelle „Kommentar“ auftreten, da nicht alle Posts in vergleichbarer Weise kommentiert werden~\vglcite{SoniNadi2019CommentUpdates,Sheikhaei2023URC}.
 
 \subsection{Abhängigkeit von Daten, Modellen und Kontext}
 Empirische Analysen und automatisierte Pflegeansätze setzen voraus, dass Post-Evolution und Kommentarhistorie zuverlässig rekonstruierbar sind.
 \acs{SOTorrent} bietet hierzu eine etablierte Datenbasis~\cite{Baltes2018SOTorrent}.
-Die Reproduzierbarkeit bleibt jedoch vom Datenzugang und der Bereitstellung abhängig~\cite{StackExchangeDataDumpBlog2014,StackExchangeLicenseTxt,StackOverflowBigQuery2016}.
-Zudem unterliegt die Nutzung Stack-Overflow-spezifischen Lizenzbedingungen~\cite{StackOverflowHelpLicensing,StackExchangeCCBYSA2019,StackExchangeLicenseTxt}.
+Die Reproduzierbarkeit bleibt jedoch vom Datenzugang und der Bereitstellung abhängig~\vglcite{StackExchangeDataDumpBlog2014,StackExchangeLicenseTxt,StackOverflowBigQuery2016}.
+Zudem unterliegt die Nutzung Stack-Overflow-spezifischen Lizenzbedingungen~\vglcite{StackOverflowHelpLicensing,StackExchangeCCBYSA2019,StackExchangeLicenseTxt}.
 
-Ansätze wie \acs{SOUP} hängen von Modellwahl, Trainingsdaten und Fine-tuning ab~\cite{Mai2025SOUP}.
+Ansätze wie \acs{SOUP} hängen von Modellwahl, Trainingsdaten und Fine-tuning ab~\vglcite{Mai2025SOUP}.
 Der \acs{LLM}-Kontext ist zudem zeitlich volatil.
 Die betrachtete Studie nutzt CodeLlama; leistungsfähigere Modelle (z.\,B.\ GPT-4o) könnten die berichtete Performance drastisch erhöhen, was die Vergleichbarkeit aktueller Benchmarks einschränkt.
-Qualitätsgrenzen bleiben dennoch relevant \cite{Kabir2024IsSOObsolete},
-und Anreizverschiebungen können die öffentliche Wissensproduktion beeinflussen~\cite{delRioChanona2024KnowledgeSharing}.
+Qualitätsgrenzen bleiben dennoch relevant \vglcite{Kabir2024IsSOObsolete},
+und Anreizverschiebungen können die öffentliche Wissensproduktion beeinflussen~\vglcite{delRioChanona2024KnowledgeSharing}.
 
 % -------------------------------------------------------
 \section{Fazit und Ausblick}\label{sec:fazit}
 Diese Arbeit untersuchte, wie Kommentare auf Stack Overflow als Signalquelle genutzt werden können, um veraltete oder fehlerhafte Antworten systematisch zu aktualisieren.
-Der Forschungsstand zeigt, dass Obsoleszenz auf der Plattform verbreitet ist und Aktualisierungen nur begrenzt erfolgen~\cite{Zhang2019ObsoleteAnswers}.
-\acs{API}-Evolution und Copy-and-Paste verstärken praktische Risiken, einschließlich sicherheitsrelevanter Fehlverwendungen~\cite{ZhouWalker2016Deprecation,Fischer2017SOHarmful}.
-Kommentare liefern dabei ein verwertbares Wartungssignal, etwa über comment-induced updates und \acs{URC}s~\cite{SoniNadi2019CommentUpdates,Sheikhaei2023URC}.
+Der Forschungsstand zeigt, dass Obsoleszenz auf der Plattform verbreitet ist und Aktualisierungen nur begrenzt erfolgen~\vglcite{Zhang2019ObsoleteAnswers}.
+\acs{API}-Evolution und Copy-and-Paste verstärken praktische Risiken, einschließlich sicherheitsrelevanter Fehlverwendungen~\vglcite{ZhouWalker2016Deprecation,Fischer2017SOHarmful}.
+Kommentare liefern dabei ein verwertbares Wartungssignal, etwa über comment-induced updates und \acs{URC}s~\vglcite{SoniNadi2019CommentUpdates,Sheikhaei2023URC}.
 
-Die Fallstudie \acs{SOUP} zeigt, dass kommentarbasiertes Post-Updating technisch operationalisierbar ist und in realen Plattformprozessen Wirkung entfalten kann~\cite{Mai2025SOUP}.
-Robuste Plattformpflege erfordert jedoch hybride Prozesse: Automatisierung liefert Priorisierung und Vorschläge, während Menschen Prüfung, Kontextvalidierung und Verantwortung übernehmen~\cite{Mai2025SOUP}.
-Plattformpflege bleibt auch im \acs{LLM}-Umfeld zentral, weil \acs{LLM}-Antworten nicht durchgängig verlässlich sind~\cite{Kabir2024IsSOObsolete}
-und weil Anreizverschiebungen die öffentliche Wissensweitergabe reduzieren können~\cite{delRioChanona2024KnowledgeSharing}.
+Die Fallstudie \acs{SOUP} zeigt, dass kommentarbasiertes Post-Updating technisch operationalisierbar ist und in realen Plattformprozessen Wirkung entfalten kann~\vglcite{Mai2025SOUP}.
+Robuste Plattformpflege erfordert jedoch hybride Prozesse: Automatisierung liefert Priorisierung und Vorschläge, während Menschen Prüfung, Kontextvalidierung und Verantwortung übernehmen~\vglcite{Mai2025SOUP}.
+Plattformpflege bleibt auch im \acs{LLM}-Umfeld zentral, weil \acs{LLM}-Antworten nicht durchgängig verlässlich sind~\vglcite{Kabir2024IsSOObsolete}
+und weil Anreizverschiebungen die öffentliche Wissensweitergabe reduzieren können~\vglcite{delRioChanona2024KnowledgeSharing}.
 
-\subsection{Ausblick}
-Zukünftige Arbeiten sollten (i) die Kommentar--Edit-Kausalität robuster modellieren~\cite{Mai2025SOUP},
-(ii) die Übertragbarkeit über Sprachen und Domänen evaluieren~\cite{ZhouWalker2016Deprecation,Mai2025SOUP},
-(iii) sicherheitskritische Updates priorisieren~\cite{Fischer2017SOHarmful}
-und (iv) hybride Workflows stärker in die Plattform-\acs{UI}/\acs{UX} integrieren~\cite{StackOverflowHelpEditing,StackOverflowCommentGuidance}.
+Zukünftige Arbeiten sollten (i) die Kommentar--Edit-Kausalität robuster modellieren~\vglcite{Mai2025SOUP},
+(ii) die Übertragbarkeit über Sprachen und Domänen evaluieren~\vglcite{ZhouWalker2016Deprecation,Mai2025SOUP},
+(iii) sicherheitskritische Updates priorisieren~\vglcite{Fischer2017SOHarmful}
+und (iv) hybride Workflows stärker in die Plattform-\acs{UI}/\acs{UX} integrieren~\vglcite{StackOverflowHelpEditing,StackOverflowCommentGuidance}.
+
 
 \section*{Abkürzungsverzeichnis}
 \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
-% IEEEtran: Labelbreite für description-basierte Listen sauber setzen
+
+
 \renewcommand{\IEEEiedlistdecl}{\IEEEsetlabelwidth{SOTorrent}}
 \begin{acronym}
 \acro{API}{Application Programming Interface}
